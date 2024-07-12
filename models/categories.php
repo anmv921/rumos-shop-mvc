@@ -1,16 +1,8 @@
 <?php
 
-class Categories {
+require_once("base.php");
 
-    public $db;
-
-    public function __construct() {
-        // isto devia estar no config
-        $this->db = new PDO(
-            "mysql:host=localhost;dbname=shop;charset=utf8mb4",
-             "root",
-              "");
-    } // End __construct
+class Categories extends Base {
 
     public function get() {
         $query = $this->db->prepare("

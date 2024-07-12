@@ -6,6 +6,4 @@ $model = new Products();
 
 $products = $model->getProductsFromCategory($id);
 
-print_r($products);
-
-// require("views/products.php");
+require("views/products.php");

@@ -1,8 +1,8 @@
 <?php
 
-define("ROOT", "/shopMVC");
+session_start();
 
-// echo $_SERVER['REQUEST_URI'];
+define("ROOT", "/shopMVC");
 
 $url_parts = explode("/", $_SERVER["REQUEST_URI"]);
 
@@ -14,8 +14,6 @@ if( empty($controller) ) {
 
 if( !empty($url_parts[3]) ) {
     $id = $url_parts[3];
-
-    var_dump($id);
 }
 
 require("controllers/" . $controller . ".php");

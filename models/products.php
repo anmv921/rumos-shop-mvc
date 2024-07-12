@@ -1,15 +1,8 @@
 <?php
 
-class Products {
-    public $db;
+require_once("base.php");
 
-    public function __construct() {
-        // isto devia estar no config
-        $this->db = new PDO(
-            "mysql:host=localhost;dbname=shop;charset=utf8mb4",
-             "root",
-              "");
-    } // End __construct
+class Products extends Base {
 
     public function getProductsFromCategory($category_id) {
         $query = $this->db->prepare("
@@ -32,5 +25,33 @@ class Products {
 
     } // End getProductsFromCategory
 
+    public function getItem($id) {
+        $query = $this->db->prepare("
+            SELECT product_id, name, description, price, stock, image, category_id
+            FROM products
+            WHERE product_id = ?
+        ");
 
-}
+        $query->execute([$id]);
+
+        return $query->fetch();
+    } // End getItem
+
+    public function getProductWithStock($product_id, $quantity) {
+
+        $query = $this->db->prepare("
+            SELECT product_id, name, price, stock
+            FROM products
+            WHERE product_id = ?
+            AND stock >= ?
+        ");
+
+        $query->execute([
+            $product_id,
+            $quantity
+        ]);
+
+        return $query->fetch( PDO::FETCH_ASSOC );
+    } // End getProductWithStock
+
+} // End class
