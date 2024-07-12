@@ -25,5 +25,5 @@
         ';
     }
 ?>
-                <a href="cart.php">Carrinho (<?php echo $cart_count; ?>)</a>
+                <a href="<?=ROOT?>/cart/">Carrinho (<?php echo $cart_count; ?>)</a>
             </nav>

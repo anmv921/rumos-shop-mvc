@@ -51,8 +51,12 @@
     }
 ?>
         <nav>
-            <a href="./">Voltar à Home</a>
-            <a href="checkout.php">Efectuar Encomenda</a>
+            <a href="./">
+                Voltar à Home
+            </a>
+            <a href="checkout.php">
+                Efectuar Encomenda
+            </a>
         </nav>
     </body>
 </html>
