@@ -6,24 +6,31 @@
         }
     }
 ?>
-            <nav>
-<?php
-    if(isset($_SESSION["user_id"])) {
-        
-        /* obter o primeiro nome da pessoa separando tudo pelos espaços */
-        $name_parts = explode(" ", $_SESSION["user_name"]);
+<nav>
+    <?php
+        if(isset($_SESSION["user_id"])) {
+            
+            /* obter o primeiro nome da pessoa 
+            separando tudo pelos espaços */
+            $name_parts = explode(" ",
+             $_SESSION["user_name"]);
 
-        echo '
-            Olá ' .$name_parts[0]. '!
-            <a href="logout.php">Efectuar Logout</a>
-        ';
-    }
-    else {
-        echo '
-            <a href="'.ROOT.'/register/">Criar Conta</a>
-            <a href="login.php">Efectuar Login</a>
-        ';
-    }
-?>
-                <a href="<?=ROOT?>/cart/">Carrinho (<?php echo $cart_count; ?>)</a>
-            </nav>
+            echo '
+                Olá ' .$name_parts[0]. '!
+                <a href="'.
+                ROOT.'/logout/">Efectuar Logout</a>
+            ';
+        }
+        else {
+            echo '
+                <a href="'.ROOT.
+                '/register/">Criar Conta</a>
+                <a href="'.ROOT.
+                '/login/">Efectuar Login</a>
+            ';
+        }
+    ?>
+    <a href="<?=ROOT?>/cart/">
+        Carrinho (<?php echo $cart_count; ?>)
+    </a>
+</nav>
