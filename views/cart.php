@@ -54,7 +54,7 @@
             <a href="<?=ROOT?>/">
                 Voltar à Home
             </a>
-            <a href="checkout.php">
+            <a href="<?=ROOT?>/checkout/">
                 Efectuar Encomenda
             </a>
         </nav>
