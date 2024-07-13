@@ -46,7 +46,6 @@ foreach($_SESSION["cart"] as $item) {
         $item["product_id"]
     );
 
-    
 } // End foreach
 
 unset( $_SESSION["cart"] );
