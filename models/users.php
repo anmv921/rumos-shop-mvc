@@ -26,7 +26,6 @@ class Users extends Base {
                 vat_code)
             VALUES(?, ?, ?, ?, ?, ?, ?, ?)
         ");
-
         return $query->execute([
             $name,
             $email,
@@ -37,7 +36,17 @@ class Users extends Base {
             $country,
             $vat_code
         ]);
-
     } // End insertUser
+
+    public function getUser($email) {
+        $query = $this->db->prepare("
+            SELECT user_id, name, password
+            FROM users
+            WHERE email = ?
+        ");
+        $query->execute([$email]);
+
+        return $query->fetch();
+    } // End getUser
 
 } // End class
