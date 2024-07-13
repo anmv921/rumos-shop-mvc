@@ -37,7 +37,8 @@ class Products extends Base {
         return $query->fetch();
     } // End getItem
 
-    public function getProductWithStock($product_id, $quantity) {
+    public function getProductWithStock(
+        $product_id, $quantity) {
 
         $query = $this->db->prepare("
             SELECT product_id, name, price, stock

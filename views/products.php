@@ -2,7 +2,9 @@
 <html lang="pt">
     <head>
         <meta charset="utf-8">
-        <title><?php echo $products[0]["category"]; ?></title>
+        <title>
+            <?php echo $products[0]["category"] ?? ""; ?>
+        </title>
         <style>
             .products {
                 list-style-type: none;
@@ -22,7 +24,9 @@
     </head>
     <body>
         <main>
-            <h1><?php echo $products[0]["category"]; ?></h1>
+            <h1>
+                <?php echo $products[0]["category"] ?? ""; ?>
+            </h1>
             <ul class="products">
 <?php
     foreach($products as $product) {
