@@ -54,4 +54,20 @@ class Products extends Base {
         return $query->fetch( PDO::FETCH_ASSOC );
     } // End getProductWithStock
 
+    public function subtractStock(
+        $quantity,
+        $product_id
+    ) {
+        $query = $this->db->prepare("
+            UPDATE products
+            SET stock = stock - ?
+            WHERE product_id = ?
+        ");
+    
+        $query->execute([
+            $quantity,
+            $product_id
+        ]);
+    } // End subtractStock
+
 } // End class

@@ -2,6 +2,7 @@
 
 require_once("models/orders.php");
 require_once("models/orderdetails.php");
+require_once("models/products.php");
 
 /* verificar se o utilizador não está logado */
 if( !isset($_SESSION["user_id"]) ) {
@@ -27,34 +28,26 @@ $order_id = $ordersModel
 
 foreach($_SESSION["cart"] as $item) {
 
+    /* inserir a linha de encomenda */
     $orderDetailsModel = new OrderDetails();
 
-    /* inserir a linha de encomenda */
-    $query = $db->prepare("
-        INSERT INTO orderdetails
-        (order_id, product_id, quantity, price_each)
-        VALUES(?, ?, ?, ?)
-    ");
-    
-    $query->execute([
+    $orderDetailsModel
+    ->insertOrderDetails(
         $order_id,
         $item["product_id"],
         $item["quantity"],
-        $item["price"]
-    ]);
+        $item["price"]);
 
     /* abater no stock */
-    $query = $db->prepare("
-        UPDATE products
-        SET stock = stock - ?
-        WHERE product_id = ?
-    ");
-    
-    $query->execute([
+    $productsModel = new Products();
+
+    $productsModel->subtractStock(
         $item["quantity"],
         $item["product_id"]
-    ]);
-}
+    );
+
+    
+} // End foreach
 
 unset( $_SESSION["cart"] );
 
