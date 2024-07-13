@@ -41,7 +41,8 @@
                                 value="1"
                             >
                         </label>
-                        <input type="hidden" name="product_id" value="<?php echo $product["product_id"]; ?>">
+                        <input type="hidden" 
+                        name="product_id" value="<?php echo $product["product_id"]; ?>">
                         <button type="submit" name="send">Adicionar ao Cesto</button>
                     </div>
                 </form>

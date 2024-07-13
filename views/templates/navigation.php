@@ -20,7 +20,7 @@
     }
     else {
         echo '
-            <a href="register.php">Criar Conta</a>
+            <a href="'.ROOT.'/register/">Criar Conta</a>
             <a href="login.php">Efectuar Login</a>
         ';
     }

@@ -29,8 +29,4 @@ if(isset($_POST["send"]) &&
     header("Location: ".ROOT."/cart/");
 } // End if
 
-
-
-
-
 require('views/cart.php');

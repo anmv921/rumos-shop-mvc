@@ -51,7 +51,7 @@
     }
 ?>
         <nav>
-            <a href="./">
+            <a href="<?=ROOT?>/">
                 Voltar à Home
             </a>
             <a href="checkout.php">
