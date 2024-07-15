@@ -4,6 +4,7 @@ require("models/categories.php");
 
 $model = new Categories();
 
-$categories = $model->get();
+$categories = $model
+->getCategories();
 
 require("views/home.php");

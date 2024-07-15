@@ -4,7 +4,9 @@ require_once("base.php");
 
 class Products extends Base {
 
-    public function getProductsFromCategory($category_id) {
+    public function getProductsFromCategory(
+        $category_id) {
+            
         $query = $this->db->prepare("
             SELECT
                 products.product_id,

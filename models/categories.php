@@ -4,7 +4,7 @@ require_once("base.php");
 
 class Categories extends Base {
 
-    public function get() {
+    public function getCategories() {
         $query = $this->db->prepare("
             SELECT category_id, name
             FROM categories
@@ -23,7 +23,8 @@ class Categories extends Base {
             FROM
                 categories AS c1
             INNER JOIN
-                categories AS c2 ON(c1.parent_id  = c2.category_id)
+                categories AS c2 
+            ON(c1.parent_id  = c2.category_id)
             WHERE
                 c1.parent_id = ?
         ");
@@ -34,5 +35,21 @@ class Categories extends Base {
 
         return $query->fetchAll();
     } // End getSubcategories
+
+    public function getSubcategoryById(
+        $id) {
+            $query = $this->db->prepare("
+                SELECT 
+                    c1.category_id,
+                    c1.name
+                FROM
+                    categories AS c1
+                WHERE
+                    c1.category_id = ?
+            ");
+
+            $query->execute([$id]);
+            return $query->fetch();
+    } // End getSubcategoryById
 
 } // End class

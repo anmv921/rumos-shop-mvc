@@ -29,16 +29,20 @@
             </h1>
             <ul class="products">
 <?php
-    foreach($products as $product) {
-        echo '
+    if (isset($products[0]["product_id"])) {
+        foreach($products as $product) {
+            echo '
                 <li>
-                    <a href="' . ROOT . '/productdetail/' .$product["product_id"]. '">
-                        <img src="'.ROOT.'/images/' .$product["image"]. '" alt="">
-                        ' .$product["name"]. '
-                    </a>
+                    <a href="' . ROOT . '/productdetail/' . 
+                    $product["product_id"] . '">
+                        <img src="' . ROOT . '/images/' .
+                        $product["image"] . '" alt="">' . 
+                        $product["name"] .
+                    '</a>
                 </li>
-        ';
-    }
+            ';
+        } // End foreach
+    } // End if
 ?>
             </ul>
 <?php
